@@ -1,6 +1,6 @@
 package josh.portal;
 
-import jakarta.annotation.Resource;
+
 import josh.portal.dao.CarDao;
 import josh.portal.dao.ProductDao;
 import josh.portal.dao.UserDao;
@@ -14,12 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
 public class sqlTest {
-    @Resource
+    @Autowired
     UserDao userDao;
     @Autowired
     ProductDao productDao;

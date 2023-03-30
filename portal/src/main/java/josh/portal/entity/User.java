@@ -1,7 +1,10 @@
 package josh.portal.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Data;
+
+
 
 @Data
 @Entity
