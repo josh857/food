@@ -2,11 +2,8 @@ package josh.portal.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-
-
-@Entity
 @Table(name = "product")
+@Entity
 @Data
 public class Product {
     @Id

@@ -1,6 +1,7 @@
 package josh.portal.controller;
 
 import josh.portal.Vo.ImageVo;
+import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;
 import josh.portal.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,10 @@ public class ProductController {
     }
 
 
+    @PostMapping("/new")
+    public String saveProduct (@RequestBody ProductVo pv){
+        System.out.println(pv);
+    return "接收到數據";
+
+    }
 }
