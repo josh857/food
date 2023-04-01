@@ -8,4 +8,5 @@ public class ProductVo {
     private String title;
     private String price;
     private String img;
+    private String type;
 }

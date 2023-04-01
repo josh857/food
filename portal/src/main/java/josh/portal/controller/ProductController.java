@@ -37,8 +37,10 @@ public class ProductController {
 
     @PostMapping("/new")
     public String saveProduct (@RequestBody ProductVo pv){
+
         System.out.println(pv);
-    return "接收到數據";
+        return productService.saveProduct(pv);
+
 
     }
 }

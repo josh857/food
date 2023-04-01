@@ -1,6 +1,7 @@
 package josh.portal.service;
 
 import josh.portal.Vo.ImageVo;
+import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -9,7 +10,9 @@ import java.util.List;
 
 public interface ProductService {
 
-    public List<Product> getproducts(String type);
+     List<Product> getproducts(String type);
 
-    public List<ImageVo> getimage();
+     List<ImageVo> getimage();
+
+     String saveProduct(ProductVo pv);
 }
