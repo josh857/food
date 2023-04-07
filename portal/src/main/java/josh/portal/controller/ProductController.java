@@ -1,5 +1,6 @@
 package josh.portal.controller;
 
+import com.github.pagehelper.PageInfo;
 import josh.portal.Vo.ImageVo;
 import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;
@@ -25,6 +26,7 @@ public class ProductController {
     //根據type 得到productlist
     @GetMapping("/getproduct/{type}")
     public List<Product> getproducts(@PathVariable String type) {
+
         List<Product> list = productService.getproducts(type);
         return list;
     }
@@ -36,11 +38,9 @@ public class ProductController {
 
 
     @PostMapping("/new")
-    public String saveProduct (@RequestBody ProductVo pv){
-
+    public String saveProduct (@RequestBody ProductVo pv, MultipartFile file){
         System.out.println(pv);
-        return productService.saveProduct(pv);
-
-
+        System.out.println(file);
+        return "";
     }
 }

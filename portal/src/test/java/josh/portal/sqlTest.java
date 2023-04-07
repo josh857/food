@@ -1,7 +1,6 @@
 package josh.portal;
 
 
-import josh.portal.dao.CarDao;
 import josh.portal.dao.ProductDao;
 import josh.portal.dao.UserDao;
 import josh.portal.entity.Car;
@@ -9,10 +8,8 @@ import josh.portal.entity.Product;
 import josh.portal.entity.User;
 import josh.portal.service.CarService;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 
 import java.util.ArrayList;

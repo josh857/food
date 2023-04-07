@@ -1,5 +1,7 @@
 package josh.portal.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import josh.portal.Vo.ImageVo;
 import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;
@@ -15,4 +17,5 @@ public interface ProductService {
      List<ImageVo> getimage();
 
      String saveProduct(ProductVo pv);
+
 }

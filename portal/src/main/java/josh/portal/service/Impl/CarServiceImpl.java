@@ -7,7 +7,6 @@ import josh.portal.entity.Product;
 import josh.portal.service.CarService;
 
 
-import josh.portal.service.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

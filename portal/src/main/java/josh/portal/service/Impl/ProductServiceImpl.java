@@ -1,5 +1,7 @@
 package josh.portal.service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import josh.portal.Vo.ImageVo;
 import josh.portal.Vo.ProductVo;
 import josh.portal.dao.ProductDao;
@@ -25,10 +27,11 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> getproducts(String type) {
+    public List<Product> getproducts(String type ) {
         List<Product> list = productDao.getType(type);
         return list;
     }
+
 
     @Override
     public List<ImageVo> getimage() {
@@ -41,6 +44,7 @@ public class ProductServiceImpl implements ProductService {
         }
         return images;
     }
+
 
     public static String tobase64(String filename) {
         InputStream in = null;
