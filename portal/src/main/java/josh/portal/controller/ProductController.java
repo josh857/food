@@ -1,11 +1,13 @@
 package josh.portal.controller;
 
+
 import com.github.pagehelper.PageInfo;
 import josh.portal.Vo.ImageVo;
 import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;
 import josh.portal.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -24,11 +26,11 @@ public class ProductController {
 
 
     //根據type 得到productlist
-    @GetMapping("/getproduct/{type}")
-    public List<Product> getproducts(@PathVariable String type) {
-
-        List<Product> list = productService.getproducts(type);
-        return list;
+    @GetMapping("/getproduct/{type}/{pageNum}")
+    public Page<Product> getproducts(@PathVariable String type, @PathVariable Integer pageNum) {
+        Integer pageSize = 8;
+        Page<Product> products = productService.getproducts(type, pageNum - 1, pageSize);
+        return products;
     }
 
     @GetMapping("/image")
@@ -37,10 +39,11 @@ public class ProductController {
     }
 
 
-    @PostMapping("/new")
-    public String saveProduct (@RequestBody ProductVo pv, MultipartFile file){
-        System.out.println(pv);
-        System.out.println(file);
-        return "";
+    @GetMapping("/getproduct/{Id}")
+    public Product getproduct(@PathVariable String Id) {
+        Long id = Long.parseLong(Id);
+        Product p = productService.getproduct(id);
+        System.out.println(p);
+        return p;
     }
 }

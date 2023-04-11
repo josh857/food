@@ -45,12 +45,7 @@ public class sqlTest {
         Product p = productDao.save(product);
     }
 
-    @Test
-    public void getproduct() {
-        List<Product> products = new ArrayList<>();
-        products = productDao.getType("1");
-        products.forEach(product -> System.out.println(product));
-    }
+
 
     @Test
     public void getimage() {

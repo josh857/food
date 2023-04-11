@@ -9,10 +9,8 @@ import josh.portal.service.JasperService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
-import net.sf.jasperreports.export.ExporterInput;
-import net.sf.jasperreports.export.OutputStreamExporterOutput;
-import net.sf.jasperreports.export.SimpleExporterInput;
-import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+import net.sf.jasperreports.engine.export.JRXlsExporterParameter;
+import net.sf.jasperreports.export.*;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -27,19 +25,46 @@ import java.io.InputStream;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
+
 @CrossOrigin
 @RestController
 public class TestController {
 
-  @Autowired
-  JasperService jasperService;
-@Autowired
-JasperDao jasperDao;
+    @Autowired
+    JasperService jasperService;
+    @Autowired
+    JasperDao jasperDao;
 
 
-    @RequestMapping (value = "/pdf1")
-    public void pdf(Map<String,Object> parameters, HttpServletResponse response) {
-        jasperService.pdf1(parameters,response);
+    @RequestMapping(value = "/pdf1")
+    public void pdf(Map<String, Object> parameters, HttpServletResponse response) {
+        jasperService.pdf1(parameters, response);
+    }
+
+    @RequestMapping(value = "/xml1")
+    public void exportToExcel(HttpServletResponse response, Map<String, Object> parameters) throws Exception {
+        try {
+            response.reset();
+            response.setContentType("application/vnd.ms-excel;charset=UTF8");
+            ClassPathResource resource = new ClassPathResource("jasper/myDemo.jasper");
+            List<Jasper> list = jasperDao.findAll();
+            list.forEach(jasper -> System.out.println(jasper));
+            JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(list);
+            InputStream in = resource.getInputStream();
+            JasperPrint jasperPrint = JasperFillManager.fillReport(in, parameters, dataSource);
+            SimpleXlsExporterConfiguration con = new SimpleXlsExporterConfiguration();
+
+            JRXlsExporter jrXlsExporter = new JRXlsExporter();
+            jrXlsExporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+            // 設定輸出流
+            jrXlsExporter.setParameter(JRExporterParameter.OUTPUT_STREAM, response.getOutputStream());
+            jrXlsExporter.setParameter(JRXlsExporterParameter.IS_ONE_PAGE_PER_SHEET, Boolean.FALSE);
+            jrXlsExporter.setParameter(JRExporterParameter.CHARACTER_ENCODING, "UTF8");
+            jrXlsExporter.exportReport();
+            System.out.println("Done!");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
