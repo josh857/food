@@ -10,6 +10,7 @@ import josh.portal.service.CarService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 import java.util.ArrayList;
@@ -63,5 +64,12 @@ public class sqlTest {
     public void getCar() {
         List<Car> cars = carService.getcarts();
         cars.forEach(car -> System.out.println(car));
+    }
+
+    @Test
+    public void bcryptTest (){
+        BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+        String password=bCryptPasswordEncoder.encode("888888");
+        System.out.println(password);
     }
 }

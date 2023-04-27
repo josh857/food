@@ -25,7 +25,6 @@ public class JasperServiceImpl implements JasperService {
     @Autowired
     JasperDao jasperDao;
 
-
     public void pdf1(Map<String, Object> parameters, HttpServletResponse response) {
         ServletOutputStream os = null;
         try {

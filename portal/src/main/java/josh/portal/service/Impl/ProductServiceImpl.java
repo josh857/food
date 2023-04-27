@@ -63,7 +63,6 @@ public class ProductServiceImpl implements ProductService {
 
     }
 
-
     @Transactional
     @Override
     public String saveProduct(ProductVo pv) {
@@ -80,7 +79,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getproduct(Long Id) {
-       Product p = productDao.getproduct(Id);
-       return p;
+        Product p = productDao.getproduct(Id);
+        return p;
     }
 }

@@ -1,7 +1,6 @@
 package josh.portal.controller;
 
 
-import com.github.pagehelper.PageInfo;
 import josh.portal.Vo.ImageVo;
 import josh.portal.Vo.ProductVo;
 import josh.portal.entity.Product;

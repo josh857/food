@@ -45,13 +45,10 @@ public class CarServiceImpl implements CarService {
             e.printStackTrace();
         }
         return "儲存成功";
-
     }
-
     public Long getCount() {
         return carDao.count();
     }
-
 
     @Override
     public List<Car> getcarts() {
@@ -74,7 +71,7 @@ public class CarServiceImpl implements CarService {
         return "更新成功";
     }
 
-
+    @Transactional
     @Override
     public String updatecountLess(Long id) {
         if (id == null) {
@@ -89,7 +86,7 @@ public class CarServiceImpl implements CarService {
         return "更新成功";
     }
 
-
+    @Transactional
     @Override
     public String deleteById(Long id) {
         carDao.deleteById(id);

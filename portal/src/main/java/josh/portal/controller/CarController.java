@@ -23,7 +23,7 @@ public class CarController {
     }
 
     //獲取購物車內的數量
-    @GetMapping("/getcount")
+    @GetMapping( "/getcount")
     Long getCount() {
         return carService.getCount();
     }
